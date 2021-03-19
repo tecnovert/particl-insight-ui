@@ -37,7 +37,7 @@
   </div>
   <div data-ng-if="block.hash">
     <div class="well well-sm ellipsis">
-      <strong>BlockHash</strong> 
+      <strong>BlockHash</strong>
       <span class="txid text-muted">{{block.hash}}</span>
       <span class="btn-copy" clip-copy="block.hash"></span>
     </div>
@@ -79,6 +79,10 @@
               </div>
             </td>
           </tr>
+          <tr>
+            <td><strong>Plain Balance</strong></td>
+            <td class="text-right text-muted">{{$root.currency.getConvertion(block.plainbalance) || block.plainbalance + ' PART'}}</td>
+          </tr>
           <tr data-ng-show="block.previousblockhash">
             <td><strong translate>Previous Block</strong></td>
             <td class="text-right"><a href="block/{{block.previousblockhash}}">{{block.height-1}}</a></td>
@@ -117,6 +121,10 @@
           <tr>
             <td> <strong translate>Version</strong></td>
             <td class="text-right text-muted">{{block.version}}</td>
+          </tr>
+          <tr>
+            <td><strong>Blinded Balance</strong></td>
+            <td class="text-right text-muted">{{$root.currency.getConvertion(block.anonbalance + block.blindbalance) || (block.anonbalance + block.blindbalance) + ' PART'}}</td>
           </tr>
           <tr data-ng-show="block.nextblockhash">
             <td><strong translate>Next Block</strong></td>
